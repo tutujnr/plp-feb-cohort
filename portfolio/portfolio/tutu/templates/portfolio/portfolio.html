@@ -1,0 +1,62 @@
+<section id="portfolio" class="portfolio py-5">
+  <div class="container">
+    <div class="section-title text-center mb-5">
+      <h2 class="fw-bold">Portfolio</h2>
+      <p class="text-muted">My Works</p>
+    </div>
+
+    <div class="row justify-content-center mb-4">
+      <div class="col-lg-10">
+        <ul id="portfolio-flters" class="d-flex justify-content-center flex-wrap gap-3 list-unstyled">
+          <li data-filter="*" class="filter-active btn btn-outline-primary px-4 py-2">All</li>
+          <li data-filter=".filter-project" class="btn btn-outline-secondary px-4 py-2">Project</li>
+          <li data-filter=".filter-certification" class="btn btn-outline-success px-4 py-2">Certification</li>
+          <li data-filter=".filter-badge" class="btn btn-outline-info px-4 py-2">Badge</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="row portfolio-container justify-content-center">
+      {% for portfolio_items in portfolio %}
+      <div class="col-md-6 col-lg-4 mb-4 portfolio-item {{ portfolio_items.filter }}">
+        <div class="card h-100 shadow-lg border-0 rounded-4 overflow-hidden">
+          <div class="img-wrapper position-relative">
+            <a
+              data-fancybox
+              data-src="{{ portfolio_items.photo.url }}"
+              data-caption="{{ portfolio_items.name }}"
+            >
+              <img
+                src="{{ portfolio_items.photo.url }}"
+                class="card-img-top img-fluid rounded-top"
+                alt="{{ portfolio_items.name }} Image"
+                loading="lazy"
+                style="{{ portfolio_items.object_fit }}; height: 240px; object-fit: cover; transition: transform 0.4s ease;"
+                onmouseover="this.style.transform='scale(1.05)'"
+                onmouseout="this.style.transform='scale(1)'"
+              />
+            </a>
+          </div>
+          <div class="card-body text-center">
+            <h5 class="card-title fw-bold mb-3">{{ portfolio_items.name }}</h5>
+            <div class="imgwrapper-link d-flex justify-content-center gap-3">
+              {% if portfolio_items.link1 and portfolio_items.link2 %}
+              <a href="{{ portfolio_items.link1 }}" target="_blank" class="btn btn-sm btn-outline-dark px-3">
+                <i class="fa-regular fa-code"></i> Code
+              </a>
+              <a href="{{ portfolio_items.link2 }}" target="_blank" class="btn btn-sm btn-outline-primary px-3">
+                <i class="fa-solid fa-eye"></i> View
+              </a>
+              {% else %}
+              <a href="{{ portfolio_items.link3 }}" target="_blank" class="btn btn-sm btn-outline-success px-3">
+                <i class="fa-regular fa-circle-check"></i> Verify
+              </a>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>

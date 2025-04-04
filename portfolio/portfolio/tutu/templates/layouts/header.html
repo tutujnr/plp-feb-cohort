@@ -1,0 +1,58 @@
+{% load static %}
+<header id="header" class="header-section py-4 shadow-sm">
+  <div class="container">
+    {% for personal_info in personal %}
+    
+    <!-- 🔁 Marquee -->
+    <div class="marquee-container text-white text-center py-1 mb-3 rounded-pill">
+      <marquee behavior="scroll" direction="left" scrollamount="6">
+        🚀 Welcome to Langat’s Portfolio – Built with precision, powered by passion.
+      </marquee>
+    </div>
+
+    <!-- 👤 Branding (Image + Name) -->
+    <div class="d-flex justify-content-between align-items-center flex-wrap mb-4">
+      <div class="d-flex align-items-center gap-3">
+        <div class="profile-circle">
+          <img
+            src="{{ personal_info.photo.url }}"
+            alt="Profile"
+            loading="lazy"
+          />
+        </div>
+        <div>
+          <h1 class="mb-0">
+            <a href="/" class="text-decoration-none text-white fw-bold display-6">Langat</a>
+          </h1>
+          <p class="mb-0 text-white-50">{{ personal_info.mini_description|safe }}</p>
+        </div>
+      </div>
+
+      <!-- 🧭 Navbar -->
+      <nav id="navbar" class="navbar d-flex align-items-center gap-4 mt-3 mt-lg-0">
+        <ul class="nav list-unstyled d-flex align-items-center gap-3 m-0">
+          <li><a href="#about" class="text-white text-decoration-none">About</a></li>
+          <li><a href="#portfolio" class="text-white text-decoration-none">Portfolio</a></li>
+          <li><a href="#contact" class="text-white text-decoration-none">Contact</a></li>
+          <li><a class="nav-link framed-link" href="#header">Home</a></li>
+          <li><a class="nav-link framed-link" href="#about">About</a></li>
+          <li><a class="nav-link framed-link" href="#portfolio">Portfolio</a></li>
+          <li><a class="nav-link framed-link" href="#contact">Contact</a></li>
+          <li>
+            <a href="{% url 'digital_cv' %}" target="_blank" class="btn btn-outline-light px-3 py-1 rounded-pill">
+              Digital CV <i class="fa-regular fa-paper-plane ms-1"></i>
+            </a>
+          </li>
+        </ul>
+        <i class="fa-solid fa-bars mobile-nav-toggle d-lg-none fs-4 text-white"></i>
+      </nav>
+    </div>
+
+    <!-- 🔗 Socials -->
+    <div class="social-links d-flex gap-3">
+      <a href="{{ personal_info.github }}" class="text-white fs-5" target="_blank"><i class="fa-brands fa-github"></i></a>
+      <a href="{{ personal_info.linkedin }}" class="text-white fs-5" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+    </div>
+    {% endfor %}
+  </div>
+</header>

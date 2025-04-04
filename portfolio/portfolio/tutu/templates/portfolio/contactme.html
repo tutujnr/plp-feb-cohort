@@ -1,0 +1,102 @@
+<section id="contact" class="contact py-5">
+  <div class="container">
+    <!-- Section Title -->
+    <div class="section-title text-center mb-5">
+      <h2>Contact</h2>
+      <p>Contact Me</p>
+    </div>
+
+    <div class="row g-4">
+      {% for personal_info in personal %}
+        <!-- My Address -->
+        <div class="col-md-6 col-lg-3 d-flex">
+          <div class="info-box text-center w-100 p-4 shadow-sm rounded">
+            <i class="fa-solid fa-earth-asia fa-2x mb-2 text-primary"></i>
+            <h4 class="mb-1">My Address</h4>
+            <p>{{ personal_info.location }}</p>
+          </div>
+        </div>
+
+        <!-- Social Links -->
+        <div class="col-md-6 col-lg-3 d-flex">
+          <div class="info-box text-center w-100 p-4 shadow-sm rounded">
+            <i class="fa-solid fa-heart fa-2x mb-2 text-danger"></i>
+            <h4 class="mb-1">Social Profiles</h4>
+            <div class="d-flex justify-content-center gap-3 mt-2">
+              <a href="{{ personal_info.github }}" target="_blank" class="text-dark" aria-label="GitHub">
+                <i class="fa-brands fa-github fa-lg"></i>
+              </a>
+              <a href="{{ personal_info.linkedin }}" target="_blank" class="text-dark" aria-label="LinkedIn">
+                <i class="fa-brands fa-linkedin fa-lg"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Email -->
+        <div class="col-md-6 col-lg-3 d-flex">
+          <div class="info-box text-center w-100 p-4 shadow-sm rounded">
+            <i class="fa-regular fa-envelope fa-2x mb-2 text-info"></i>
+            <h4 class="mb-1">Email Me</h4>
+            <p>{{ personal_info.email }}</p>
+          </div>
+        </div>
+      {% endfor %}
+
+      <!-- Let's Connect -->
+      <div class="col-md-6 col-lg-3 d-flex">
+        <div class="info-box text-center w-100 p-4 shadow-sm rounded">
+          <i class="fa-solid fa-comment fa-2x mb-2 text-success"></i>
+          <h4 class="mb-1">Let's Connect</h4>
+          <p>
+            Stay connected with me through social media for the latest
+            updates and collaborations.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Contact Form Card -->
+    <div class="row justify-content-center mt-5">
+      <div class="col-lg-8">
+        <div class="card p-4 shadow-lg rounded">
+          <h3 class="card-title text-center mb-4">Send Me a Message</h3>
+          <form id="contactme_form" method="post" action="{% url 'home' %}" class="php-email-form">
+            {% csrf_token %}
+            <div class="row">
+              <div class="col-md-6 form-group mb-3">
+                {{ contact_form.your_name }}
+              </div>
+              <div class="col-md-6 form-group mb-3">
+                {{ contact_form.your_email }}
+              </div>
+            </div>
+            <div class="form-group mb-3">
+              {{ contact_form.subject }}
+            </div>
+            <div class="form-group mb-3">
+              {{ contact_form.message }}
+            </div>
+
+            <div class="form-group captcha-field mb-3">
+              {{ contact_form.captcha }}
+            </div>
+
+            <div class="my-3">
+              <div class="loading">Loading...</div>
+              <div class="error-message"></div>
+              <div class="sent-message">Your message has been sent. Thank you!</div>
+            </div>
+
+            <div class="text-center">
+              <button type="submit" id="recaptcha-submit" class="btn btn-primary px-4 py-2">
+                Send Message
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>

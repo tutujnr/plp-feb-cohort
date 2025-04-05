@@ -118,17 +118,6 @@ class Portfolio(models.Model):
     year = models.CharField(max_length=4, null=True, blank=True)
     object_fit = models.CharField(max_length=100, null=True, blank=True)
     
-    
-    # def get_cloudinary_folder(self):
-    #     if self.filter == 'filter-project':
-    #         return 'portfolio/project'
-    #     elif self.filter == 'filter-certification':
-    #         return 'portfolio/certification'
-    #     elif self.filter == 'filter-badge':
-    #         return 'portfolio/badge'
-
-    #photo = CloudinaryField(folder=get_cloudinary_folder)
-    
     def get_upload_to(self, filename):
         if self.filter == 'filter-project':
             return 'portfolio/project/{}'.format(filename)

@@ -1,0 +1,5 @@
+python
+django
+cloudinary
+django-cloudinary-storage
+

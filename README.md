@@ -29,7 +29,7 @@ Follow these steps to set up the project on your local machine.
 
 ```bash
 git clone https://github.com/tutujnr/plp-feb-cohort.git
-cd your-repo
+cd portfolio 
 ```
 
 ### 2. Install dependencies
